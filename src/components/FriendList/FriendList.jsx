@@ -1,13 +1,25 @@
-import friends from "path/to/friends.json";
+import PropTypes from 'prop-types';
+import { FriendListItem } from '../FriendListItem/FriendListItem';
 
-<FriendList friends={friends} />;
+export const FriendList = ({ friends }) => {
+  return (
+    <ul class="friend-list">
+      {friends.map(item => {
+        <FriendListItem
+          key={item.id}
+          avatar={item.avatar}
+          name={item.name}
+          isOnline={item.isOnline}
+        />
+      })}
+    </ul>
+  );
+};
 
-{/* <ul class="friend-list">
-  <!-- Довільна кіл-сть FriendListItem -->
-</ul>
-
-<li class="item">
-  <span class="status"></span>
-  <img class="avatar" src="" alt="User avatar" width="48" />
-  <p class="name"></p>
-</li> */}
+FriendList.propTypes = {
+  friends: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    })
+  ),
+};
