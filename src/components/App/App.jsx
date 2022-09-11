@@ -2,6 +2,7 @@ import user from '../data/user.json';
 import friends from '../data/friends.json';
 import statistics from '../data/statistics.json';
 import transactions from '../data/transactions.json';
+import { Box } from '../App/App.styled';
 
 import { Profile } from '../Profile/Profile';
 import { Statistics } from '../Statistics/Statistics';
@@ -10,7 +11,7 @@ import { TransactionHistory } from '../TransactionHistory/TransactionHistory';
 
 export const App = () => {
   return (
-    <>
+    <Box>
       <Profile
         username={user.username}
         tag={user.tag}
@@ -18,23 +19,9 @@ export const App = () => {
         avatar={user.avatar}
         stats={user.stats}
       />
-      <Statistics title="Upload stats" stats={statistics} />
+      <Statistics title="Upload statistics" stats={statistics} />
       <FriendList friends={friends} />
       <TransactionHistory items={transactions} />
-    </>
+    </Box>
   );
 };
-
-
-//  <div
-//    style={{
-//      height: '100vh',
-//      display: 'flex',
-//      justifyContent: 'center',
-//      alignItems: 'center',
-//      fontSize: 40,
-//      color: '#010101',
-//    }}
-//  >
-//    React homework
-//  </div>
